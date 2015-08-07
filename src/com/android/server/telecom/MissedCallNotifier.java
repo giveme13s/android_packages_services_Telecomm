@@ -77,14 +77,15 @@ class MissedCallNotifier extends CallsManagerListenerBase {
     private final Context mContext;
     private final NotificationManager mNotificationManager;
 
+    private CallInfoProvider mCallInfoProvider;
     // Used to track the number of missed calls.
     private int mMissedCallCount = 0;
 
-    MissedCallNotifier(Context context) {
+    MissedCallNotifier(Context context, CallInfoProvider callInfoProvider) {
         mContext = context;
         mNotificationManager =
                 (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-
+        mCallInfoProvider = callInfoProvider;
         updateOnStartup();
     }
 
